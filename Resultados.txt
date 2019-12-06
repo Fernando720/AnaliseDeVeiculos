@@ -1,0 +1,5 @@
+Veículos cadastrados: 20000
+Veículos disponíveis: 17971
+Carros Corolla disponíveis: 1536
+Carros de 2017: 5951
+Carros com plana iniciada com a letra 'P': 15949
