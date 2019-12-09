@@ -45,13 +45,13 @@ while i<len(listaLinhas):
     if linhaLista[6][0] == "P":
         placa = placa + 1
     i=i+1
-print("carros com placa iniciada com a letra 'P': ",placa)
+print("carros com placa iniciada sem a letra 'P': ",cadastrados - placa)
 
 #Criando arquivo e escrevendo os resultados nele:
 file = open("Resultados.txt",'w')
 
 file.write("Veículos cadastrados: " + str(cadastrados) + "\nVeículos disponíveis: " + str(disponiveis) + "\nCarros Corolla disponíveis: " + str(corolla) + "\nCarros de 2017: " + str(ano))
-file.write("\nCarros com plana iniciada com a letra 'P': " + str(placa))
+file.write("\nCarros com plana iniciada com a letra 'P': " + str(cadastrados - placa))
 
 file.close()
 

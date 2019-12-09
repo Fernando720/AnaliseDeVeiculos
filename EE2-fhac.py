@@ -1,5 +1,5 @@
 from matplotlib import pyplot as plt
-
+from collections import Counter
 
 arquivo = open("veiculos.txt",'r')
 listaLinhas = arquivo.readlines()
@@ -33,31 +33,31 @@ def tipos():
 
     tipos = ["carro","utilitário","van"]
     quantidade = [carros,utes,vans]
-
+    
     plt.figure(1)
     plt.bar(tipos,quantidade)
-    
+    plt.ylabel("Quantidade")
+    plt.title("Quantidades de cada tipo de veículo")
 
 def reservados():
-    corolla = 0
-    prisma = 0
-    listaModelos =["Uno", ]
-    for vec in listaVeiculos:
-        
-        if vec.modelo != listaModelos:
-            listaModelos.append(vec.modelo)
+    
+    listaModelos =[]
+    for vec in range(1,len(listaVeiculos)):
+        if listaVeiculos[vec].reservado == "True":
+            listaModelos.append(listaVeiculos[vec].modelo)
+    dictModelos = Counter(listaModelos)
     
     
-    print(listaModelo)        
-
-    modelos = ["Corolla","Prisma"]
-    reservados = [corolla,prisma]
-
-    #plt.figure(2)
-    #plt.bar(modelos,reservados)
+    modelos = dictModelos.keys()
+    quantidades = dictModelos.values()
+    print(dictModelos)
     
 
+    plt.figure(2)
+    plt.bar(modelos,quantidades)
+    plt.ylabel("Quantidade")
+    plt.title("Quantidade de veículos reservados por modelo")
 tipos()
 reservados()
-#plt.show()
+plt.show()
 
