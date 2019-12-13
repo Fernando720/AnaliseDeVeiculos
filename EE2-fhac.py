@@ -49,8 +49,8 @@ def reservados():
     for vec in range(0,len(listaVeiculos)):
         if listaVeiculos[vec].reservado == "True": 		#se o veículo estiver reservado
             listaModelos.append(listaVeiculos[vec].modelo) 	#adiciona o modelo deste veículo (que é um objeto com atributos, dentre eles, o modelo) à lista de modelos
-    dictModelos = Counter(listaModelos) 			'''faz a contagem de quanto cada modelo aparece e retorna uma lista de dicionários. Em cada um, 
-													a chave é o modelo e o valor da chave é a frequencia'''
+    dictModelos = Counter(listaModelos) 			#faz a contagem de quanto cada modelo aparece e retorna uma lista de dicionários. Em cada um, 
+													#a chave é o modelo e o valor da chave é a frequencia
     
     
     modelos = dictModelos.keys() 				#pega as chaves (modelo) da lista do Counter e adiciona em uma lista separada
@@ -85,21 +85,22 @@ def mediaAutonomiaPorAno():
     
     listaAno = []
     for vec in range(0,len(listaVeiculos)):
-	listaAno.append(listaVeiculos[vec].ano)
-    Contagem = Counter(listaAno) 			#contagem de cada ano
-    anosOrd = sorted(dictAno.items()) 			#retorna uma lista de tuplas ordenadas pelas chave (ano) do Counter(listaAno)
-    dictAno = dict(anosOrd) 				#Transforma lista de tuplas em lista de dicionários
+        listaAno.append(listaVeiculos[vec].ano)
+    contagem = Counter(listaAno) 			#contagem de cada ano
+    anosOrd = sorted(contagem.items())                                                
+    dictAno = dict(anosOrd)
+     
     anosFabricacao = dictAno.keys() 			#transforma as chaves (anos) em uma lista
-    frequenciaAno = dictAno.values() 			#transforma os valores das chaves (frequencia com a qual o ano aparece) em uma lista
+     			
     autonomiaPorAno = []
     for ano in dictAno:
-	somaAutonomia = 0
-	media = 0
-	for vec in range(0,len(listaVeiculos)):
-	    if anosFabricacao[ano] == listaVeiculos[vec].ano:
-		somaAutonomia = somaAutonomia + listaVeiculos[vec].autonomia
-	media = somaAutonomia/frequenciaAno[ano]
-	autonomiaPorAno.append(media)
+        somaAutonomia = 0
+        media = 0
+        for vec in range(0,len(listaVeiculos)):
+            if ano == listaVeiculos[vec].ano:
+                somaAutonomia = somaAutonomia + float(listaVeiculos[vec].autonomia)
+        media = somaAutonomia/dictAno[ano]
+        autonomiaPorAno.append(media)
 
     '''A ordenação do dicionário foi importante para organizar o gráfico por ordem crescente de anos de fabricação'''
 
