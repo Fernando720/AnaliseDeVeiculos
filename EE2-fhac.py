@@ -70,8 +70,9 @@ def carros2017():
     listaAno = []
     for vec in range(0,len(listaVeiculos)):
         listaAno.append(listaVeiculos[vec].ano) 	#segue o mesmo raciocínio da função anterior (reservado())
-    dictAno = Counter(listaAno)
-    
+    contagem = Counter(listaAno)
+    anosOrd = sorted(contagem.items())
+    dictAno = dict(anosOrd)
     anosFabricacao = dictAno.keys()
     quantidades = dictAno.values()
     
@@ -96,14 +97,16 @@ def mediaAutonomiaPorAno():
     for ano in dictAno:
         somaAutonomia = 0
         media = 0
+        
         for vec in range(0,len(listaVeiculos)):
             if ano == listaVeiculos[vec].ano:
                 somaAutonomia = somaAutonomia + float(listaVeiculos[vec].autonomia)
         media = somaAutonomia/dictAno[ano]
         autonomiaPorAno.append(media)
-
+        
     '''A ordenação do dicionário foi importante para organizar o gráfico por ordem crescente de anos de fabricação'''
-
+    
+    
     plt.figure(4)
     plt.bar(anosFabricacao,autonomiaPorAno)
     plt.ylabel("autonomia média (km/L)(?)")
