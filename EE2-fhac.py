@@ -41,6 +41,7 @@ def tipos():
     plt.bar(tipos,quantidade)
     plt.ylabel("Quantidade")
     plt.title("Quantidades de cada tipo de veículo")
+    plt.savefig("quantidade_por_tipo.pdf")
 
 #letra b
 def reservados():
@@ -62,6 +63,7 @@ def reservados():
     plt.bar(modelos,quantidades)
     plt.ylabel("Quantidade")
     plt.title("Quantidade de veículos reservados por modelo")
+    plt.savefig("reservados_por_modelo.pdf")
 
 #Daqui para baixo, o código ainda não foi baixado (criado no bloco de notas por motivo de equipamento deficiente)
 
@@ -80,7 +82,8 @@ def carros2017():
     plt.bar(anosFabricacao,quantidades)
     plt.ylabel("Quantidade de veículos")
     plt.title("Quantidade de veículos por ano de fabricação")
-
+    plt.savefig("veículos_por_ano.pdf")
+    
 #letra d
 def mediaAutonomiaPorAno():
     
@@ -111,6 +114,7 @@ def mediaAutonomiaPorAno():
     plt.bar(anosFabricacao,autonomiaPorAno)
     plt.ylabel("autonomia média (km/L)(?)")
     plt.title("Autonomia média por ano de fabricação")
+    plt.savefig("Autonomia_por_ano.pdf")
 
 tipos()
 reservados()
